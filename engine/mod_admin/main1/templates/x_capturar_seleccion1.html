@@ -1,0 +1,101 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_urls admin_list admin_modify %}
+
+{% block extrahead %}
+	{{ block.super}}
+	  <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+      <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+	  <script type="text/javascript">
+	 	(function($){
+		  $(document).ready(function(){
+			   $(".marcar_todos input").click( function() {
+				  marcar_todos(this);
+			   })
+		  })/*(jQuery);*/
+		  function marcar_todos(obj){
+			   if (obj.checked==false){
+					$(".checkbox").removeAttr('checked');	
+			   }
+			   else {
+					$(".checkbox").attr({'checked':'1'});
+			   }
+		  }($);
+		  function cerrar(){
+			 window.close();  
+		  }
+
+	 	})
+
+	 </script>
+{% endblock %}
+
+
+{% block extrastyle %}
+  {{ block.super}}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/changelists1.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}" />
+{% endblock %}
+
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block content %}
+
+<div style="margin-left:20%; margin-top:20px; margin-right:20%; text-align:center;">
+<form action="" method="post">{% csrf_token %}
+
+	 <h4 style="margin-bottom:10px;">{{ titulo|safe }}</h4>
+	 {{ radio }}
+	 <table style="border:solid #cccccc 2px; margin-bottom:10px; width:100%;" summary="lista">
+		  <thead>
+			   <tr>
+                    {% if radio %}
+                         <th>&nbsp;</th>
+                    {% else %}
+                         <th class="marcar_todos">
+                              <input type="checkbox" style="display: inline;"/>
+                         </th>
+                    {% endif %}
+					{% for columna in columnas %}
+						 <th>
+							  {{columna}}
+						 </th>
+					{% endfor %}
+			   </tr>
+		  </thead>
+		  {% if not filas %}
+			   <tbody>
+					<tr><th></th><th colspan={{columnas|length}} style="text-align:center;">
+					*** {% trans "No existen datos" %} ***
+					</th></tr>
+			   </tbody>
+		  {% endif %}
+		  {% for fila in filas %}
+			   <tbody>
+					<tr class="{% cycle 'row1' 'row2' %}" style="text-align:left;">
+						 <td>
+                              {% if radio %}
+                                   <input type="radio" name="seleccion" value="{{fila.0}}" /><strong class="rojo">{{fila.0}}</strong>
+                              {% else %}
+                                   <input type="checkbox" class="checkbox" {{fila.2}} name="checkbox_{{fila.0}}" />
+                              {% endif %}
+						 </td>
+						 {% for celda in fila.1 %}
+							  {{celda|safe}}
+						 {% endfor %}
+					</tr>
+			   </tbody>
+		  {% endfor %}
+	 </table>
+	 {% if not filas %}
+		  <input type="button" name="salir" value={% trans "Salir" %} onclick="cerrar()"/>
+	 {% else %}
+		  <input type="submit" name="submit" value={% trans "Guardar" %} />
+	 {% endif %}
+</form>
+
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

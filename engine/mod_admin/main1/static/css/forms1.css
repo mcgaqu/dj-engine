@@ -1,0 +1,86 @@
+
+
+
+/* De forms.css 422
+---------------------*/
+
+.inline-group .tabular tr.has_original td {
+    padding-top: 0em;
+}
+
+
+
+
+.aligned label {
+	float: none;
+	height: 22px;
+	/* width: 260; */
+}
+
+.form-row {
+	border-bottom:0;
+    padding: 1px;
+}
+
+/* De forms.css 86
+---------------------*/
+.aligned label + p, .aligned label + div.help, .aligned label + div.readonly {
+/*    padding: 6px 0;
+    margin-top: 0;
+    margin-bottom: 0;*/
+    /* margin-left: 170px; */
+    margin-left: 0px;
+}
+
+
+
+/* De forms.css 107
+---------------------*/
+form .aligned ul {
+    /* margin-left: 160px; */
+    margin-left: 0; 
+    padding-left: 10px;
+}
+
+/* De forms.css 250
+---------------------*/
+.submit-row {
+    background: #C6C6C6;
+}
+
+/* De forms.css 357
+---------------------*/
+.inline-group {
+    padding: 0;
+    margin: 0 0 0px;
+}
+
+
+
+/* De forms.css 362
+---------------------*/
+.inline-group thead th {
+    padding: 4px 10px;
+}
+
+
+/* De forms.css 422
+---------------------*/
+.inline-group .tabular tr.has_original td {
+    padding-top: 0.5em;
+}
+
+
+
+/* De forms.css 422
+---------------------*/
+.inline-group .tabular tr.add-row td {
+    padding: 4px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* De forms.css 492
+---------------------*/
+tr.add-row td a {
+    font-size: 16px;
+}

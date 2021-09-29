@@ -1,0 +1,115 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+
+{% block extrastyle %}
+  {{ block.super}}
+  {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/base1.css' %}" /> {% endcomment %}
+  {% if menu_cms %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu_nav.css' %}" />
+  {% endif %}
+{% endblock %}
+
+
+{% block branding %}
+	
+<h1 id="site-name">
+	<!-- <img src="{% static 'img/logos_unita/logo-unita-vertical.png' %}" style="height: 60px; width:60px"> -->
+  <img src="{% static 'img/logos/logo_asinex.jpeg' %}" style="height: 60px; width:250px">
+	<a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a>
+</h1>
+{% endblock %}
+
+{% block userlinks %}
+  {% if user.is_superuser %}
+    {{ block.super }}
+  {% else %}
+  {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+  {% endif %} 
+{% endblock %}
+
+
+{% block nav-global %}
+  {% if menu_cms %}
+    <div id="nav-global">
+      <!--<br class="clear" />-->
+      <ul id="menu-cms">
+        {% for menu_app in menu_cms %}
+        <li>
+          <a href="/{{ menu_app.0.0 }}">{{ menu_app.0.1 }}</a>
+          <ul>
+					{% for lin in menu_app.1 %}
+                 <li><a href="/{{ lin.0 }}">{{ lin.1 }}</a></li>
+              {% endfor %}          
+          </ul>
+        </li>
+        {% endfor %}
+
+      </ul>
+      <br class="clear" />
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block x_nav-global %}
+<!--{% if user.is_superuser or  es_master %}-->
+<div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+		<ul class="nav navbar-nav">					
+				{% for menu_app in menu_cms %}
+				<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"
+							 role="button" aria-haspopup="true" aria-expanded="true"
+							 href="/{{ menu_app.0.0 }}">{{ menu_app.0.1 }}</a>
+						<ul class="dropdown-menu">
+							 {% for lin in menu_app.1 %}
+							 <li><a href="/{{ lin.0 }}">{{ lin.1 }}</a></li>
+							 {% endfor %}          
+						</ul>
+				</li>
+			{% endfor %}
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown"
+							 role="button" aria-haspopup="true" aria-expanded="true"
+							 href="#">  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>: {% firstof user.get_short_name user.get_username %}</a>
+				 <ul class="dropdown-menu">
+					        <li><a href="/{{ name_cms }}/{{ name_emp }}/adjango/user/{{ request.user.id }}/change/" >Configuración</a></li>
+						<li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> </li>
+						<li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}...<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></a></li>
+				 </ul>
+			</li>       
+		</ul>
+  <a href="http://ainell.es/"  target="_blank">
+  <img src="/static/img/logo_ainell_sol.png" class="resp-head1" >
+  </a>
+
+</div>
+
+{% else %}
+
+<div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+  <a href="http://ainell.es/"  target="_blank">
+  <img src="/static/img/logo_ainell_sol.png" class="resp-head1" >
+  </a>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  {% if user.is_superuser %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block nav-sidebar %}
+  {% if user.is_superuser %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}

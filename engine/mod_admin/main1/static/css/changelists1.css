@@ -1,0 +1,22 @@
+
+
+/* de changelist.css 70
+---------------------*/
+#changelist #toolbar {
+    padding: 1px 10px;
+    margin-bottom: 8px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background: #f8f8f8;
+    color: #666;
+}
+/* de changelist.css 133
+---------------------*/
+#changelist-filter h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 15px;
+    margin-bottom: 1px;
+    border-bottom: none;
+}

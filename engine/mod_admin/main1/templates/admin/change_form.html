@@ -1,0 +1,92 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block x_extrastyle %}
+  {{ block.super}}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/forms1.css' %}" />
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  {% if user.is_superuser %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block x_breadcrumbs %}
+  {% for tool in breadcrumbs_form %}
+      {% if tool.has_permission %}
+      <li><a href="{{ tool.url }}" class="{{ tool.class }}">{{ tool.nombre }}</a></li>
+      {% endif %}
+  {% endfor %}
+{% endblock %}
+
+
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      {% if user.is_superuser %}        
+        <li>
+            {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+            <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+        </li>
+      {% endif %} 
+    {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif %}
+    {% for tool in tool_form %}
+        {% if tool.has_permission %}
+        <li>
+          {% if tool.icono %}
+            <a href="{{ tool.url }}">
+              <img src="{% static tool.icono %}" height="20px"  width="20px"
+              title="{{ tool.nombre }}"></a>
+          {% else %}    
+            <a href="{{ tool.url }}" class="historylink">{{ tool.nombre }}</a>
+          {% endif %}  
+        </li>
+        {% endif %} 
+    {% endfor %}
+    {% endblock %}
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}
+
+
+{% block content_title %}
+  {% if titulo_form %}
+    <h1>
+      <img src="{% static icono %}" height="30px"  width="30px"
+              title="{{ opts.verbose_name_plural|capfirst }}">
+      {{ titulo_form }}
+      {% if has_view_permission %}
+        <!-- <a href="{% url opts|admin_urlname:'changelist' %}"> -->
+        {% if arriba_url %}
+          <a href="{{ arriba_url }}">
+            <img src="{% static 'img/arriba.png' %}" height="30px"  width="30px"
+                title="Volver a {{ opts.verbose_name_plural|capfirst }}">          
+          </a>
+        {% endif %} 
+      {% endif %}      
+    </h1>
+  {% endif %}
+{% endblock %}
+
+{% block x_content_title %}
+  {% if titulo_form %}
+    <h1>
+      <img src="{% static icono %}" height="30px"  width="30px"
+              title="{{ titulo_form }}">
+      {{ titulo_form }}
+      {% if has_view_permission %}
+        <!-- <a href="{% url opts|admin_urlname:'changelist' %}"> -->
+        {% if arriba_url %}
+          <a href="{{ arriba_url }}">
+            <img src="{% static 'img/arriba.ico' %}" height="30px"  width="30px"
+                title="{{ opts.verbose_name_plural|capfirst }}">          
+          </a>
+        {% endif %} 
+      {% endif %}      
+    </h1>
+  {% endif %}
+{% endblock %}
+

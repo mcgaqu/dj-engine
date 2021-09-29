@@ -1,0 +1,31 @@
+{% extends "admin/index.html" %}
+{% load i18n static %} 
+
+
+
+{% block extrahead %}
+  {{ block.super}}
+   <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+   <script src="{% static 'admin/js/jquery.init.js' %}"></script>
+   <script src="{% static 'chartjs/Chart.bundle.min.js' %}"/></script>
+   <script src="{% static 'js/grafico.js' %}"/></script>
+{% endblock %}
+
+
+{% block content %}
+  <div id="canvas-grafico" style="width=50%;">
+    <ul id="grafico-id" name={{ grafico_id }}" display="inline">
+      <li><canvas id="chart1" width="400" height="350">
+          </canvas></li>
+      <li><canvas id="chart2" width="400" height="350">
+          </canvas></li>
+    </ul>
+  </div>
+  <p id="ventana"></p> 
+  <button onclick="crearVentana();">Crear Ventana</button>
+  <button onclick="cerrarVentana();">Cerrar Ventana</button>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}

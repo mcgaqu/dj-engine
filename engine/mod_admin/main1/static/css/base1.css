@@ -1,0 +1,104 @@
+
+.object-tools a {
+    /*border-radius: 0px 20px 0px 20px;
+     box-shadow: rgb(750,150,150) -15px 5px 5px;*/
+}
+
+
+/* de base.css 27
+---------------------*/
+
+td, th {
+    font-size: 13px;
+    line-height: 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    padding: 4px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+
+/* de base.css 59
+---------------------*/
+h1 {
+    margin: 0 0 2px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #666;
+}
+
+/* de base.css 120
+---------------------*/
+form {
+    margin: 10px;
+    padding: 10px;
+    /* background: #FFFFCC; */
+}
+
+/* de base.css 249
+---------------------*/
+td, th {
+    font-size: 13px;
+    line-height: 16px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    padding: 4px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+/* de base.css 426
+---------------------*/
+
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel], textarea, select, .vTextField {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin-top: 0;
+}
+
+/* de base.css 439
+---------------------*/
+select {
+    height: 24px;
+}
+
+/* de base.css 496
+---------------------*/
+
+.module {
+    border: none;
+    margin-bottom: 3px;
+    background: #F9F9F9;
+}
+
+
+
+
+/* de base.css 517
+---------------------*/
+.module h2, .module caption, .inline-group h2 {
+    margin: 0;
+    padding: 2px 8px 2px 8px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: left;
+    background: #79aec8;
+    color: #fff;
+}
+
+/* de base.css 691
+---------------------*/
+.object-tools {
+    font-size: 10px;
+    font-weight: bold;
+    padding-left: 0;
+    float: right;
+    position: relative;
+    margin-top: -34px;
+}
+
+/* de base.css 772
+---------------------*/
+#content {
+    padding: 10px 40px;
+}

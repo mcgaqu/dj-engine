@@ -1,0 +1,38 @@
+{% extends "admin/index.html" %}
+{% load i18n static %}
+
+
+
+{% block extrastyle %}
+  {{ block.super}}
+  {% if menu_cms %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu_nav.css' %}" />
+  {% endif %}
+{% endblock %}
+
+
+{% block x_content %}
+{% if not user.is_superuser %}
+    <h2>No soy superuser.Pintar las opciones del menu content_items de mi rol</h2>
+{% else %}
+    {{ block.super }}
+{% endif %}
+{% endblock %}
+
+{% block x_sidebar %}
+{% if user.is_superuser %}
+    {{ block.super }}
+{% else %}
+  <h2>No soy superuser.Pintar las opciones del menu sidebar_items de mi rol</h2>
+  <ul>
+    {% for item in sidebar_items %}
+    <li>{{ item.0}}</li>
+    <ul>
+      {% for opcion in item.1 %}
+        <li>{{ opcion.0}}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
