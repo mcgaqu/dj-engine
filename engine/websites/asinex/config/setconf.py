@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import os
-from pathlib import Path
+# import os
+# from pathlib import Path
 
 #=================================
 # INSTALLED_APPS
@@ -29,9 +29,9 @@ APPS_INSTALL = [
     #------------------
     'xlrd', 'xlwt',
     # 'django_docutils',
-] 
+]
 
-APPS_ADMIN = [ 
+APPS_ADMIN = [
     'mod_admin.main1.apps.Main1Config',
     'mod_admin.main2.apps.Main2Config',
     'mod_admin.models',
@@ -45,18 +45,18 @@ APPS_ADMIN = [
 APPS_BPMN = [
     'mod_bpmn.business.apps.BusinessConfig',
     'mod_bpmn.data.apps.DataConfig',
-    'mod_bpmn.datastate.apps.DatastateConfig',    
+    'mod_bpmn.datastate.apps.DatastateConfig',
     'mod_bpmn.layouts.apps.LayoutsConfig',
-    'mod_bpmn.mdas.apps.MdasConfig',    
+    'mod_bpmn.mdas.apps.MdasConfig',
     #------------------------------------
     # 'mod_bpmn.cocklists.apps.CocklistsConfig',
-    # 'mod_bpmn.tasklists.apps.TasklistsConfig', 
+    # 'mod_bpmn.tasklists.apps.TasklistsConfig',
     #------------------------
 ]
 
 APPS_ERP = [
-    'mod_core.annexes.apps.AnnexesConfig', 
-    # 'mod_core.kinds.apps.KindsConfig',  
+    'mod_core.annexes.apps.AnnexesConfig',
+    # 'mod_core.kinds.apps.KindsConfig',
     # 'mod_entity.persons.apps.PersonsConfig',
     # 'mod_entity.products.apps.ProductsConfig',
     # 'mod_entity.projects.apps.ProjectsConfig',
@@ -66,18 +66,18 @@ APPS_ERP = [
     # 'mod_make.tasks.apps.TasksConfig',
     # 'mod_make.works.apps.WorksConfig',
     #--------------
-    
+
     # 'mod_order.commands.apps.CommandsConfig',
-    # 'mod_order.deliveries.apps.DeliveriesConfig',  
+    # 'mod_order.deliveries.apps.DeliveriesConfig',
     # 'mod_order.invoices.apps.InvoicesConfig',
-    # 'mod_order.payments.apps.PaymentesConfig', 
-    #-------------   
+    # 'mod_order.payments.apps.PaymentesConfig',
+    #-------------
     # 'websites.asinex.config',
 ]
 
 INSTALLED_APPS = APPS_INSTALL + APPS_ADMIN
 # INSTALLED_APPS += APPS_BPMN
-INSTALLED_APPS += APPS_ERP 
+INSTALLED_APPS += APPS_ERP
 
 #=======================
 
@@ -92,7 +92,7 @@ BPMN_MODELADMINS = [
             ['BModelField', 'BModelFieldAdmin1', 1],
             ['BModelAction', 'BModelActionAdmin1', 1],
      ], ],
-    # #-----------------------------------------------		
+    # #-----------------------------------------------
     ['mod_bpmn.datastate.apps.DatastateConfig', [
             ['BAction', 'BActionAdmin1', 1],
             ['BReducer', 'BReducerAdmin1', 1],
@@ -113,13 +113,13 @@ BPMN_MODELADMINS = [
             ['MdaView', 'MdaViewAdmin1', 1],
             ['MdaViewAux', 'MdaViewAuxAdmin1', 1],
      ], ],
-    #-----------------------------------------------	
+    #-----------------------------------------------
     #--------------------------------
     # ['mod_base.state.apps.DatastateConfig', [
 
     #  ], ],
 
-    #--------------------------------- 
+    #---------------------------------
     # ['mod_bpmn.datastate.apps.DatastateConfig', [
 
     #  ], ],
@@ -137,13 +137,13 @@ BPMN_MODELADMINS = [
 
 MODELADMINS = [
     ['mod_auth.adjango.apps.AdjangoConfig', [
-            ['ContentType', 'ContentTypeAdmin1', 1],     
+            ['ContentType', 'ContentTypeAdmin1', 1],
             ['Permission', 'PermissionAdmin1', 1],
-            ['User', 'UserAdmin1', 1],     
+            ['User', 'UserAdmin1', 1],
             ['Group', 'GroupAdmin1', 1],
             ['LogEntry', 'LogEntryAdmin1', 1],
-            ['Session', 'SessionAdmin1', 1], 
-            ['Site', 'SiteAdmin1', 1],        
+            ['Session', 'SessionAdmin1', 1],
+            ['Site', 'SiteAdmin1', 1],
      ], ],
     ['mod_auth.companies.apps.CompaniesConfig', [
             ['Company', 'CompanyAdmin1', 2],
@@ -175,19 +175,19 @@ MODELADMINS = [
     #         # ['PersonAux', 'PersonAuxAdmin1', 1],
     #         # ['PersonItem', 'PersonItemAdmin1', 1],
     # ], ],
-    # #-----------------------------------------------	
+    # #-----------------------------------------------
     # ['mod_entity.products.apps.ProductsConfig', [
     #         ['Product', 'ProductAdmin1', 2],
     #         # ['ProductAux', 'ProductAuxAdmin1', 2],
     #         # ['ProductItem', 'ProductItemAdmin1', 1],
     # ],],
-    # #-----------------------------------------------	
+    # #-----------------------------------------------
     # ['mod_entity.projects.apps.ProjectsConfig', [
     #         ['Project', 'ProjectAdmin1', 2],
     #         # ['ProductAux', 'ProductAuxAdmin1', 2],
     #         # ['ProductItem', 'ProductItemAdmin1', 1],
     # ],],
-    # #-----------------------------------------------	
+    # #-----------------------------------------------
 
 ]
 
@@ -195,7 +195,7 @@ MODELADMINS = [
 def get_param_settings(param, default=None):
     PARAMS = {
         'SECRET_KEY' : '+mg*=m_9!n3$l+gg8)*4k&a33zzo7_blbid4j#h6^1xg=1x8g2',
-        'ALLOWED_HOSTS' : ['127.0.0.1', 'localhost', '192.168.1.19'], 
+        'ALLOWED_HOSTS' : ['127.0.0.1', 'localhost', 'g5server.pythonanywhere.com'],
         #------
         'LANGUAGE_CODE' : 'es-es',
         'TIME_ZONE' : 'UTC',
@@ -208,7 +208,7 @@ def get_param_settings(param, default=None):
         # 'AUTH_PASSWORD_VALIDATORS': '',
         # #------------
         # 'DATA_ROOT': '',
-        # 'DATABASES': '', 
+        # 'DATABASES': '',
         # 'SITE_ID': 1,
         # 'DATABASE_ROUTERS': '',
         # #-----
@@ -232,4 +232,3 @@ def get_param_settings(param, default=None):
     if not param in PARAMS.keys():
         return default
     return PARAMS[param]
-    
